@@ -36,71 +36,76 @@ int HammingDistance(const cv::Mat &a, const cv::Mat &b){
 }
 
 
-int searchForInitializaion(Frame& refFrame, Frame& currFrame, int th, vector<int>& vMatches, std::vector<cv::Point2f>& vPrevMatched){
-    fill(vMatches.begin(),vMatches.end(),-1);
+int searchForInitializaion(Frame& refFrame,
+                           Frame& currFrame,
+                           int th,
+                           vector<int>& vMatches,
+                           std::vector<cv::Point2f>& vPrevMatched)
+{
+    fill(vMatches.begin(), vMatches.end(), -1);
 
-    vector<size_t> vIndicesToCheck(100);
+    vector<size_t> vIndicesToCheck;
 
     vector<cv::KeyPoint>& vRefKeys = refFrame.getKeyPoints();
-
-    vector<int> vMatchedDistance(vRefKeys.size(),INT_MAX);
-    vector<int> vnMatches21(vRefKeys.size(),-1);
 
     cv::Mat refDesc = refFrame.getDescriptors();
     cv::Mat currDesc = currFrame.getDescriptors();
 
     int nMatches = 0;
-    const int minOctave = 0, maxOctave = 0;
-    for(size_t i = 0; i < vRefKeys.size(); i++){
-        //Only search matches with KeyPoints in the finest scale
-        if(vRefKeys[i].octave > maxOctave){
+
+    const int minOctave = 0;
+    const int maxOctave = 0;
+
+    for(size_t i = 0; i < vRefKeys.size(); i++)
+    {
+        if(vRefKeys[i].octave > maxOctave)
             continue;
-        }
 
-        /*
-         * Your code for Lab 3 - Task 1 here!
-         */
-        //Extraes un feature
-        cv::Mat desc1 = refDesc.row(i);
-        //Where to look 
-        int windowSize = 100; 
-        //Buscas en vector de candidatos para ese punto 
-        vIndicesToCheck.clear();
+        const cv::Mat d1 = refDesc.row(i);
 
-        // Pedimos la imagen actual 
-        currFrame.getFeaturesInArea(vRefKeys[i].pt.x,vRefKeys[i].pt.y,windowSize,minOctave,maxOctave,vIndicesToCheck);
-
-        if(vIndicesToCheck.empty()){
-            continue;
-        }
-
-        //Consencius of candidates 
-        int bestDist = 255; int secondBestDist = 255;
+        int bestDist = 256;
+        int secondBestDist = 256;
         int bestIdx = -1;
-        for(size_t idx : vIndicesToCheck){ 
-            cv::Mat desc2 = currDesc.row(idx);
-            int dist = HammingDistance(desc1,desc2);
 
-            if(dist < bestDist){
+        currFrame.getFeaturesInArea(
+            vPrevMatched[i].x,
+            vPrevMatched[i].y,
+            100,
+            minOctave,
+            maxOctave,
+            vIndicesToCheck
+        );
+
+        for(auto j : vIndicesToCheck)
+        {
+            const cv::Mat d2 = currDesc.row(j);
+
+            int dist = HammingDistance(d1, d2);
+
+            if(dist < bestDist)
+            {
                 secondBestDist = bestDist;
                 bestDist = dist;
-                bestIdx = idx;
+                bestIdx = j;
             }
-            else if(dist < secondBestDist){
+            else if(dist < secondBestDist)
+            {
                 secondBestDist = dist;
             }
         }
-        
-        if(bestDist <= th && (float)bestDist < (float(secondBestDist)*0.9)){
+
+        if(bestDist <= th && bestDist < 0.9f * secondBestDist)
+        {
             vMatches[i] = bestIdx;
             nMatches++;
         }
     }
 
-    // fin del ciclo que hemos escrito
-    for(size_t i = 0; i < vMatches.size(); i++){
-        if(vMatches[i] != -1){
-            vPrevMatched[i]=currFrame.getKeyPoint(vMatches[i]).pt;
+    for(size_t i = 0; i < vMatches.size(); i++)
+    {
+        if(vMatches[i] != -1)
+        {
+            vPrevMatched[i] = currFrame.getKeyPoint(vMatches[i]).pt;
         }
     }
 
@@ -174,54 +179,103 @@ int searchWithProjection(Frame& currFrame, int th, std::vector<std::shared_ptr<M
     CameraModel* currCalibration = currFrame.getCalibration().get();
     Sophus::SE3f Tcw = currFrame.getPose();
 
-    vector<size_t> vIndicesToCheck(100);
+    vector<size_t> vIndicesToCheck;
 
-    int nMatches = 0, vCos = 0, invDist = 0, noClose = 0;
+    int nMatches = 0;
+
     for(shared_ptr<MapPoint> pMP : vMapPoints){
-        //Clear previous matches
-        vIndicesToCheck.clear();
+        if(!pMP)
+            continue;
 
-        //Check normal orientation
-        assert(pMP);
+        // Transform point to camera coordinates
+        Eigen::Vector3f p3Dc = Tcw * pMP->getWorldPosition();
+
+        // Discard points behind the camera
+        if(p3Dc[2] <= 0)
+            continue;
+
+        // Project into image
+        cv::Point2f uv = currCalibration->project(p3Dc);
+
+        // Discard points outside image bounds (getFeaturesInArea handles grid clipping,
+        // but we reject obviously out-of-bounds projections early)
+        if(uv.x < currFrame.getMinCol() || uv.y < currFrame.getMinRow())
+            continue;
+
+        // Check normal orientation
         Eigen::Vector3f rayWorld = pMP->getWorldPosition() - currFrame.getPose().inverse().translation();
         float viewCos = rayWorld.normalized().dot(pMP->getNormalOrientation());
-
-        if(viewCos < 0.5){
-            vCos++;
+        if(viewCos < 0.5)
             continue;
-        }
 
-        //Check distance is in the scale invariance region of the MapPoint
+        // Check distance is in the scale invariance region of the MapPoint
         float dist = rayWorld.norm();
         float maxDistance = pMP->getMaxDistanceInvariance();
         float minDistance = pMP->getMinDistanceInvariance();
-
-        if(dist < minDistance || dist > maxDistance){
-            invDist++;
+        if(dist < minDistance || dist > maxDistance)
             continue;
-        }
 
-        //Predict scale
-        int predictedOctave = ceil(log(maxDistance/dist)/log(currFrame.getScaleFactor(1)));
+        // Predict scale
+        int predictedOctave = ceil(log(maxDistance / dist) / log(currFrame.getScaleFactor(1)));
         if(predictedOctave < 0)
             predictedOctave = 0;
-        else if(predictedOctave > currFrame.getNumberOfScales())
-            predictedOctave = currFrame.getNumberOfScales();
+        else if(predictedOctave >= currFrame.getNumberOfScales())
+            predictedOctave = currFrame.getNumberOfScales() - 1;
 
-        //Project MapPoint into the Frame
-        Eigen::Vector3f p3Dc = Tcw*pMP->getWorldPosition();
-        cv::Point2f uv = currCalibration->project(p3Dc);
-
+        // Search radius based on viewing angle
         float radius = currFrame.getScaleFactor(predictedOctave);
-        if(viewCos>0.998)
-            radius *= 2.5;
+        if(viewCos > 0.999)
+            radius *= 8.0f;
         else
-            radius *= 4.0;
+            radius *= 12.0f;
 
-        /*
-         * Your matching code for Lab 3 - Task 4 goes here
-         */
+        // Get feature candidates around projected position
+        vIndicesToCheck.clear();
+        currFrame.getFeaturesInArea(uv.x, uv.y, radius,
+                                    predictedOctave - 2,
+                                    predictedOctave + 2,
+                                    vIndicesToCheck);
+
+        if(vIndicesToCheck.empty())
+            continue;
+
+        // Find best descriptor match
+        cv::Mat desc = pMP->getDescriptor();
+
+        int bestDist = 255;
+        int secondBestDist = 255;
+        int bestIdx = -1;
+
+        for(auto j : vIndicesToCheck)
+        {
+            // Skip features already matched to a MapPoint
+            if(currFrame.getMapPoint(j))
+                continue;
+
+            int d = HammingDistance(desc.row(0), currFrame.getDescriptors().row(j));
+
+            if(d < bestDist)
+            {
+                secondBestDist = bestDist;
+                bestDist = d;
+                bestIdx = (int)j;
+            }
+            else if(d < secondBestDist)
+            {
+                secondBestDist = d;
+            }
+        }
+
+        // Accept match if close enough and passes ratio test
+        // if(bestIdx >= 0 && bestDist <= th && bestDist < 0.9f * secondBestDist)
+        if(bestIdx >= 0 && bestDist <= th)
+        {
+            currFrame.setMapPoint(bestIdx, pMP);
+            nMatches++;
+        }
     }
+
+    std::cout << "Projection matches: " << nMatches << std::endl;
 
     return nMatches;
 }
@@ -252,7 +306,7 @@ int searchForTriangulation(KeyFrame* kf1, KeyFrame* kf2, int th, float fEpipolar
             continue;
         }
 
-        //Unrpoject KeyPoint
+        //Unproject KeyPoint
         Eigen::Vector3f ray1 = (E*calibration->unproject(kf1->getKeyPoint(i).pt).transpose()).normalized();
 
         //Search a match in the other KeyFrame

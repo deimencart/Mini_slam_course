@@ -182,6 +182,7 @@ bool Tracking::monocularMapInitialization() {
     //Find matches between previous and current frame
     int nMatches = searchForInitializaion(prevFrame_,currFrame_,settings_.getMatchingInitTh(),vMatches_,vPrevMatched_);
 
+    // This was commented
     visualizer_->drawFrameMatches(currFrame_.getKeyPointsDistorted(),currIm_,vMatches_);
 
     //If not enough matches found, updtate reference frame

@@ -16,6 +16,7 @@ set(root ${CMAKE_CURRENT_SOURCE_DIR})
 set(HEADER_FILES
         ${root}/Calibration/CameraModel.h
         ${root}/Calibration/PinHole.h
+        ${root}/Calibration/KannalaBrandt8.h
         ${root}/DatasetLoader/EurocVisualLoader.h
         ${root}/DatasetLoader/TUMRGBDLoader.h
         ${root}/DatasetLoader/TUMVILoader.h
@@ -41,6 +42,7 @@ set(HEADER_FILES
 
 set(SOURCE_FILES
         ${root}/Calibration/PinHole.cc
+        ${root}/Calibration/KannalaBrandt8.cc
         ${root}/DatasetLoader/EurocVisualLoader.cc
         ${root}/DatasetLoader/TUMRGBDLoader.cc
         ${root}/DatasetLoader/TUMVILoader.cc

@@ -41,12 +41,45 @@ Settings::Settings(const std::string& configFile) {
     float cy = fSettings["Camera.cy"];
     vector<float> vCalibration = {fx,fy,cx,cy};
 
-    calibration_ = shared_ptr<CameraModel>(new PinHole(vCalibration));
+    // calibration_ = shared_ptr<CameraModel>(new PinHole(vCalibration));
 
     /*
      * Your code for Lab 3 - Task 5 here!
      */
     // TIP: std::string sModel = fSettings["Camera.type"];
+    std::string sModel = "Pinhole"; // default
+    if (!fSettings["Camera.type"].empty()) {
+        sModel = (std::string)fSettings["Camera.type"];
+    }
+ 
+    if (sModel == "KannalaBrandt8") {
+        // Read the 4 KB distortion coefficients k0..k3
+        float k0 = fSettings["Camera.k0"];
+        float k1 = fSettings["Camera.k1"];
+        float k2 = fSettings["Camera.k2"];
+        float k3 = fSettings["Camera.k3"];
+        vector<float> vKBCalibration = {fx, fy, cx, cy, k0, k1, k2, k3};
+        calibration_ = shared_ptr<CameraModel>(new KannalaBrandt8(vKBCalibration));
+    } else {
+        // Default: PinHole
+        calibration_ = shared_ptr<CameraModel>(new PinHole(vCalibration));
+ 
+        //Read (if exists) distortion parameters (radial-tangential for pinhole)
+        if(!fSettings["Camera.k1"].empty()){
+            if(!fSettings["Camera.k3"].empty()){
+                vDistortion_.resize(5);
+                vDistortion_[4] = fSettings["Camera.k3"];
+            }
+            else{
+                vDistortion_.resize(4);
+            }
+ 
+            vDistortion_[0] = fSettings["Camera.k1"];
+            vDistortion_[1] = fSettings["Camera.k2"];
+            vDistortion_[2] = fSettings["Camera.p1"];
+            vDistortion_[3] = fSettings["Camera.p2"];
+        }
+    }
 
     //Read (if exists) distortion parameters
     if(!fSettings["Camera.k1"].empty()){

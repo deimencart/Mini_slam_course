@@ -26,55 +26,46 @@ void PinHole::project(const Eigen::Vector3f& p3D, Eigen::Vector2f& p2D){
     /*
      * Your code for Lab 3 - Task 2 here!
      */
-    float x = p3D(0);
-    float y = p3D(1);   
-    float z = p3D(2);
+    float X = p3D.x();
+    float Y = p3D.y();
+    float Z = p3D.z();
 
-
-    // Aplicando modelo pinhole
-    p2D(0) = fx * x / z + cx; //u
-    p2D(1) = fy * y / z + cy; //v
+    float u = fx * (X / Z) + cx;
+    float v = fy * (Y / Z) + cy;
+    p2D[0] = u;
+    p2D[1] = v;
 
 
 }
 
 void PinHole::unproject(const Eigen::Vector2f& p2D, Eigen::Vector3f& p3D) {
     /*
-     * Your code for  Lab 3 - Task 2 here!
+     * Your code for Lab 3 - Task 2 here!
      */
-    float u = p2D(0);
-    float v = p2D(1);
+    float x = (p2D[0] - cx) / fx;
+    float y = (p2D[1] - cy) / fy;
 
-    // Quitando la proyeccion
-    // x = (u - cx) / fx;
-    // y = (v - cy) / fy;
-    p3D(0) = (u-cx) / fx; 
-    p3D(1) = (v-cy) / fy;
-    p3D(2) = 1.f; // z = 1
-
+    p3D = Eigen::Vector3f(x, y, 1.0f);
 }
 
 void PinHole::projectJac(const Eigen::Vector3f& p3D, Eigen::Matrix<float,2,3>& Jac) {
     /*
      * Your code for Lab 3 - Task 2 here!
      */
-    //Sensibilidad del sistema 
-    float x = p3D(0);
-    float y = p3D(1);
-    float z = p3D(2);
+    float X = p3D.x();
+    float Y = p3D.y();
+    float Z = p3D.z();
 
-    float invZ = 1.f / z;
+    float invZ  = 1.0f / Z;
     float invZ2 = invZ * invZ;
 
-    //Derivadas de u con respecto a xyz
-    Jac(0,0) = fx * invZ; // du/dx
-    Jac(0,1) = 0.f; // du/dy    
-    Jac(0,2) = -fx * x * invZ2; // du/dz
+    Jac(0,0) = fx * invZ;
+    Jac(0,1) = 0.f;
+    Jac(0,2) = -fx * X * invZ2;
 
-    //Derivadas de v con respecto a xyz
-    Jac(1,0) = 0.f; // dv/dx
-    Jac(1,1) = fy * invZ; // dv/dy
-    Jac(1,2) = -fy * y * invZ2; // dv/dz
+    Jac(1,0) = 0.f;
+    Jac(1,1) = fy * invZ;
+    Jac(1,2) = -fy * Y * invZ2;
 }
 
 void PinHole::unprojectJac(const Eigen::Vector2f& p2D, Eigen::Matrix<float,3,2>& Jac) {

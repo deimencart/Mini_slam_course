@@ -59,9 +59,9 @@ bool MiniSLAM::processImage(const cv::Mat &im, Sophus::SE3f& Tcw) {
     visualizer_->updateWindows();
 
     //Uncomment for step by step execution (pressing esc key)
-    /*while((cv::waitKey(10) & 0xEFFFFF) != 27){
-        mapVisualizer_->update();
-    }*/
+    // while((cv::waitKey(10) & 0xEFFFFF) != 27){
+    //     mapVisualizer_->update();
+    // }
 
     mapVisualizer_->update();
     cv::waitKey(1);

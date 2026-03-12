@@ -36,6 +36,7 @@ int HammingDistance(const cv::Mat &a, const cv::Mat &b);
  * Searches matches for initialization in a window centered in the last position a KeyPoint was seen
  */
 int searchForInitializaion(Frame& refFrame, Frame& currFrame, int th, std::vector<int>& vMatches, std::vector<cv::Point2f>& vPrevMatched);
+
 /*
  * Searches matches between a reference Frame and a current Frame by reprojecting MapPoints into the current frame
  */
