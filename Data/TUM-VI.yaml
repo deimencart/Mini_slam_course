@@ -1,6 +1,8 @@
 %YAML:1.0
 
 # Camera calibration and distortion parameters (OpenCV) 
+Camera.type: "KannalaBrandt8"
+
 Camera.fx: 190.978477
 Camera.fy: 190.973307
 Camera.cx: 254.931706
@@ -17,7 +19,7 @@ Camera.cols: 512
 Camera.rows: 512
 
 # Number of features per image
-FeatureExtractor.nFeatures: 1000
+FeatureExtractor.nFeatures: 1500
 
 # Number of levels in the scale pyramid
 FeatureExtractor.nScales: 8
@@ -33,14 +35,14 @@ FeatureGrid.nGridRows: 48
 Epipolar.th: 0.004
 
 #Feature matching thresholds
-Matching.initialization: 50
-Matching.guidedMatching: 50
-Matching.searchByProjection: 100
+Matching.initialization: 100
+Matching.guidedMatching: 100
+Matching.searchByProjection: 150
 Matching.searchForTriangulation: 50
 Matching.fuse: 50
 
 #Covisivility graph
-Map.minObs: 70
+Map.minObs: 3 #70
 
 #Min cos parallax to triangulate
-Triangulation.minCos: 0.9998
+Triangulation.minCos: 0.9999

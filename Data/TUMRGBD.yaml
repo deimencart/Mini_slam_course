@@ -1,6 +1,8 @@
 %YAML:1.0
 
 # Camera calibration and distortion parameters
+Camera.type: "Pinhole"
+
 Camera.fx: 517.306408
 Camera.fy: 516.469215
 Camera.cx: 318.643040
@@ -17,7 +19,7 @@ Camera.cols: 640
 Camera.rows: 480
 
 # Number of features per image
-FeatureExtractor.nFeatures: 1000
+FeatureExtractor.nFeatures: 2000
 
 # Number of levels in the scale pyramid
 FeatureExtractor.nScales: 8
@@ -33,14 +35,14 @@ FeatureGrid.nGridRows: 48
 Epipolar.th: 0.002
 
 #Feature matching thresholds
-Matching.initialization: 50
-Matching.guidedMatching: 50
-Matching.searchByProjection: 100
+Matching.initialization: 100
+Matching.guidedMatching: 100
+Matching.searchByProjection: 150
 Matching.searchForTriangulation: 50
 Matching.fuse: 50
 
 #Covisivility graph
-Map.minObs: 70
+Map.minObs: 2 #70
 
 #Min cos parallax to triangulate
-Triangulation.minCos: 0.9998
+Triangulation.minCos: 0.9999
