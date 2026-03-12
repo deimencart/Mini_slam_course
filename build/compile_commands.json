@@ -1,0 +1,139 @@
+[
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/Calibration/PinHole.cc.o -c /workspaces/Mini-SLAM/Modules/Calibration/PinHole.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/Calibration/PinHole.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/DatasetLoader/EurocVisualLoader.cc.o -c /workspaces/Mini-SLAM/Modules/DatasetLoader/EurocVisualLoader.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/DatasetLoader/EurocVisualLoader.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/DatasetLoader/TUMRGBDLoader.cc.o -c /workspaces/Mini-SLAM/Modules/DatasetLoader/TUMRGBDLoader.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/DatasetLoader/TUMRGBDLoader.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/DatasetLoader/TUMVILoader.cc.o -c /workspaces/Mini-SLAM/Modules/DatasetLoader/TUMVILoader.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/DatasetLoader/TUMVILoader.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/Features/FAST.cc.o -c /workspaces/Mini-SLAM/Modules/Features/FAST.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/Features/FAST.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/Features/ORB.cc.o -c /workspaces/Mini-SLAM/Modules/Features/ORB.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/Features/ORB.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/Map/KeyFrame.cc.o -c /workspaces/Mini-SLAM/Modules/Map/KeyFrame.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/Map/KeyFrame.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/Map/Map.cc.o -c /workspaces/Mini-SLAM/Modules/Map/Map.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/Map/Map.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/Map/MapPoint.cc.o -c /workspaces/Mini-SLAM/Modules/Map/MapPoint.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/Map/MapPoint.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/Mapping/LocalMapping.cc.o -c /workspaces/Mini-SLAM/Modules/Mapping/LocalMapping.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/Mapping/LocalMapping.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/Matching/DescriptorMatching.cc.o -c /workspaces/Mini-SLAM/Modules/Matching/DescriptorMatching.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/Matching/DescriptorMatching.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/Optimization/g2oBundleAdjustment.cc.o -c /workspaces/Mini-SLAM/Modules/Optimization/g2oBundleAdjustment.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/Optimization/g2oBundleAdjustment.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/Optimization/g2oTypes.cc.o -c /workspaces/Mini-SLAM/Modules/Optimization/g2oTypes.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/Optimization/g2oTypes.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/System/Settings.cc.o -c /workspaces/Mini-SLAM/Modules/System/Settings.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/System/Settings.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/System/MiniSLAM.cc.o -c /workspaces/Mini-SLAM/Modules/System/MiniSLAM.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/System/MiniSLAM.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/Tracking/Frame.cc.o -c /workspaces/Mini-SLAM/Modules/Tracking/Frame.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/Tracking/Frame.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/Tracking/MonocularMapInitializer.cc.o -c /workspaces/Mini-SLAM/Modules/Tracking/MonocularMapInitializer.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/Tracking/MonocularMapInitializer.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/Tracking/Tracking.cc.o -c /workspaces/Mini-SLAM/Modules/Tracking/Tracking.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/Tracking/Tracking.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/Utils/Geometry.cc.o -c /workspaces/Mini-SLAM/Modules/Utils/Geometry.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/Utils/Geometry.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/Visualization/FrameVisualizer.cc.o -c /workspaces/Mini-SLAM/Modules/Visualization/FrameVisualizer.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/Visualization/FrameVisualizer.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -Dmini_slam_EXPORTS -IModules -I../Modules -I../Thirdparty/Sophus -I../Thirdparty/g2o -isystem /usr/include/eigen3 -isystem /usr/local/include/opencv4   -O3 -g -fPIC   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Modules/CMakeFiles/mini_slam.dir/Visualization/MapVisualizer.cc.o -c /workspaces/Mini-SLAM/Modules/Visualization/MapVisualizer.cc",
+  "file": "/workspaces/Mini-SLAM/Modules/Visualization/MapVisualizer.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -I../Thirdparty/Sophus -I../Modules -isystem /usr/local/include/opencv4 -isystem /usr/include/eigen3   -O3 -g   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Apps/CMakeFiles/mono_tumrgbd.dir/mono_tumrgbd.cc.o -c /workspaces/Mini-SLAM/Apps/mono_tumrgbd.cc",
+  "file": "/workspaces/Mini-SLAM/Apps/mono_tumrgbd.cc"
+},
+
+{
+  "directory": "/workspaces/Mini-SLAM/build",
+  "command": "/usr/bin/g++  -DHAVE_EIGEN -DHAVE_EPOXY -DPANGO_DEFAULT_WIN_URI=\\\"wayland\\\" -D_LINUX_ -I../Thirdparty/Sophus -I../Modules -isystem /usr/local/include/opencv4 -isystem /usr/include/eigen3   -O3 -g   -Wno-error=ignored-qualifiers -Wno-error=sign-compare -Wno-error=deprecated-copy -Wno-error=missing-field-initializers -Wno-error=pessimizing-move -std=gnu++14 -o Apps/CMakeFiles/mono_euroc.dir/mono_euroc.cc.o -c /workspaces/Mini-SLAM/Apps/mono_euroc.cc",
+  "file": "/workspaces/Mini-SLAM/Apps/mono_euroc.cc"
+}
+]
