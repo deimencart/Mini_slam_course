@@ -18,10 +18,10 @@
 /*
  * Author: Juan J. Gómez Rodríguez (jjgomez@unizar.es)
  *
- * A demo showing the Mini-SLAM library processing a sequence of the EuRoC dataset
+ * A demo showing the Mini-SLAM library processing a sequence of the TUM dataset
  */
 
-#include "DatasetLoader/EurocVisualLoader.h"
+#include "DatasetLoader/TUMVILoader.h"
 #include "System/MiniSLAM.h"
 
 #include <opencv2/opencv.hpp>
@@ -29,10 +29,10 @@
 using namespace std;
 
 int main(int argc, char **argv){
-    //Check program parameters are good
+    // The program expects exactly 2 arguments: dataset_path and timestamps_file
     if(argc != 3){
         cerr << "[Error]: you need to invoke the program with 2 parameters: " << endl;
-        cerr << "\t./mono_euroc <dataset_path> <timestamps_file>" << endl;
+        cerr << "\t./mono_tum_VI <dataset_path> <timestamps_file>" << endl;
         cerr << "Finishing execution..." << endl;
         return -1;
     }
@@ -40,10 +40,10 @@ int main(int argc, char **argv){
     //Load dataset sequence
     string datasetPath = argv[1];
     string timestampsFile = argv[2];
-    EurocVisualLoader sequence(datasetPath, timestampsFile, datasetPath + "/mav0/state_groundtruth_estimate0/data.csv");
+    TUMVILoader sequence(datasetPath, timestampsFile, datasetPath + "/mav0/cam0/state_groundtruth_estimate0/data.csv");
 
     //Create SLAM system
-    MiniSLAM SLAM("Data/EuRoC.yaml");
+    MiniSLAM SLAM("Data/TUM-VI.yaml");
 
     //File to store the trajectory
     ofstream trajectoryFile ("trajectory.txt");
@@ -55,7 +55,7 @@ int main(int argc, char **argv){
     //Process the sequence
     cv::Mat currIm;
     double currTs;
-    for(int i = 150; i < sequence.getLenght(); i++){
+    for(int i = 0; i < sequence.getLenght(); i++){
         sequence.getLeftImage(i,currIm);
         sequence.getTimeStamp(i,currTs);
 
@@ -63,7 +63,7 @@ int main(int argc, char **argv){
         if(SLAM.processImage(currIm, Tcw)){
             Sophus::SE3f Twc = Tcw.inverse();
             //Save predicted pose to the file
-            trajectoryFile << setprecision(17) << currTs*1e9 << "," << setprecision(7) << Twc.translation()(0) << ",";
+            trajectoryFile << setprecision(17) << currTs << "," << setprecision(7) << Twc.translation()(0) << ",";
             trajectoryFile << Twc.translation()(1) << "," << Twc.translation()(2) << ",";
             trajectoryFile << Twc.unit_quaternion().x() << "," << Twc.unit_quaternion().y() << ",";
             trajectoryFile << Twc.unit_quaternion().z() << "," << Twc.unit_quaternion().w() << endl;
@@ -74,3 +74,4 @@ int main(int argc, char **argv){
 
     return 0;
 }
+
